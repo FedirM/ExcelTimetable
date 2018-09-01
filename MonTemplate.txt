@@ -1,0 +1,508 @@
+Attribute VB_Name = "Module1"
+Dim sheduleWS As Worksheet
+Private Const rowHeight As Integer = 30
+Private Const colWidth As Integer = 28
+
+Private Const lecture As String = "Lecture #"
+Private Const fsubgroup As String = "First subgroup"
+Private Const ssubgroup As String = "Second subgoup"
+
+
+
+
+Sub test()
+
+If CheckIfSheetExists("Shedule") Then
+    
+    MsgBox ("Worksheet 'Shedule' exists!")
+    Worksheets("Shedule").Activate
+    
+    Else
+        MsgBox ("Worksheet 'Shedule' does not exists!")
+        Set sheduleWS = ThisWorkbook.Worksheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count))
+        sheduleWS.Name = "Shedule"
+        sheduleWS.Activate
+End If
+
+
+Range("A5:A15").Select
+With Selection
+  .Clear
+  .Cells(1).Value = "Monday"
+  .Merge
+  .HorizontalAlignment = xlGeneral
+  .VerticalAlignment = xlCenter
+  .WrapText = True
+End With
+
+
+
+End Sub
+
+Function CheckIfSheetExists(SheetName As String) As Boolean
+      CheckIfSheetExists = False
+      For Each WS In Worksheets
+        If SheetName = WS.Name Then
+          CheckIfSheetExists = True
+          Exit Function
+        End If
+      Next WS
+End Function
+
+' Template START
+Sub CreateTemplate()
+
+    Dim group As String
+    group = "Group"
+    
+    Dim day(1 To 5) As String
+    day(1) = "Monday"
+    day(2) = "Tuesday"
+    day(3) = "Wednesday"
+    day(4) = "Thursday"
+    day(5) = "Friday"
+       
+
+    Cells.Select
+    With Selection.Font
+        .Name = "Times New Roman"
+    End With
+    Range("A4:A15").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = xlVertical
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = True
+    End With
+    ActiveCell.FormulaR1C1 = day(1)
+    Range("A5:A15").Select
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 18
+        .ThemeColor = xlThemeColorLight1
+    End With
+    Selection.Font.Bold = True
+    Rows("5:5").rowHeight = rowHeight
+    Rows("6:6").rowHeight = rowHeight
+    Rows("7:7").rowHeight = rowHeight
+    Rows("8:8").rowHeight = rowHeight
+    Rows("9:9").rowHeight = rowHeight
+    Rows("10:10").rowHeight = rowHeight
+    Rows("11:11").rowHeight = rowHeight
+    Rows("12:12").rowHeight = rowHeight
+    Rows("13:13").rowHeight = rowHeight
+    Rows("14:14").rowHeight = rowHeight
+    Rows("15:15").rowHeight = rowHeight
+    
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    
+    Range("B14:B15").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    ActiveCell.FormulaR1C1 = "#5"
+    Range("B14:B15").Select
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 20
+    End With
+    Selection.Font.Bold = True
+    Range("B12:B13").Select
+    ActiveCell.FormulaR1C1 = "#4"
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 20
+    End With
+    Selection.Font.Bold = True
+    Range("B10:B11").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .ReadingOrder = xlContext
+        .MergeCells = True
+    End With
+    ActiveCell.FormulaR1C1 = "#3"
+    Range("B10:B11").Select
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 20
+    End With
+    Selection.Font.Bold = True
+    Range("B8:B9").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    ActiveCell.FormulaR1C1 = "#2"
+    Selection.Font.Bold = True
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 20
+    End With
+    Range("B6:B7").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    ActiveCell.FormulaR1C1 = "#1"
+    Selection.Font.Bold = True
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 20
+    End With
+    
+    ' Lectures # END
+    
+    Range("B5").Select
+    ' ActiveCell.FormulaR1C1 = "?????"
+    With Selection.Font
+        .Name = "Times New Roman"
+        .Size = 14
+    End With
+    ActiveCell.FormulaR1C1 = lecture
+    Columns("C:C").ColumnWidth = colWidth
+    Columns("D:D").ColumnWidth = colWidth
+    Range("C4:D4").Select
+    Selection.Merge
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    ActiveCell.FormulaR1C1 = group
+    Range("C5").Select
+    ActiveCell.FormulaR1C1 = fsubgroup
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Range("D5").Select
+    ActiveCell.FormulaR1C1 = ssubgroup
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+    End With
+    Range("C6:C7").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D6:D7").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("C8:C9").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D8:D9").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("C10:C11").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D10:D11").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("C12:C13").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("C14:C15").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D12:D13").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D14:D15").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("B6:B7").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Range("B8:B9").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Range("B10:B11").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Range("B12:B13").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Range("B14:B15").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Range("C5").Select
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("B5").Select
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    Range("D6").Select
+End Sub
