@@ -1,0 +1,90 @@
+Attribute VB_Name = "Module2"
+Sub doCombobox()
+Attribute doCombobox.VB_ProcData.VB_Invoke_Func = " \n14"
+'
+' doCombobox ??????
+'
+
+'
+    Range("C6").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    Selection.Copy
+    Range("D6").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 6")).Select
+    Range("C7").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 7")).Select
+    Range("D7").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 8")).Select
+    Range("C8").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 9")).Select
+    Range("D8").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 10")).Select
+    Range("C9").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 11")).Select
+    Range("D9").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 12")).Select
+    Range("C10").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 13")).Select
+    Range("C11").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 14")).Select
+    Range("D10").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 15")).Select
+    ActiveWindow.SmallScroll Down:=6
+    Range("D11").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 16")).Select
+    Range("C12").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 17")).Select
+    Range("D12").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 18")).Select
+    Range("C13").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 19")).Select
+    Range("D13").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 20")).Select
+    Range("C14").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 21")).Select
+    Range("D14").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 22")).Select
+    Range("C15").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 23")).Select
+    Range("D15").Select
+    ActiveSheet.DropDowns.Add(97.5, 99, 264, 35.25).Select
+    ActiveSheet.Paste
+    ActiveSheet.Shapes.Range(Array("Drop Down 24")).Select
+    ActiveWindow.SmallScroll Down:=-9
+End Sub
